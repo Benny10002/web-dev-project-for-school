@@ -1,3 +1,7 @@
+:root {
+    --debugBorderWidth: 0px;
+}
+
 * {
     font-family: serif, cursive;
     margin: 0px; 
@@ -15,9 +19,19 @@ html, body {
     height: 100%;
 }
 
-.sceneGrid {
-    width: 100%;
+.sceneGridParent {
+    border: var(--debugBorderWidth) solid blue;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sceneGrid {
+    border: var(--debugBorderWidth) solid red;
+    left: 10%;
+    width: 80%;
+    aspect-ratio: 2/1;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto;
@@ -25,8 +39,66 @@ html, body {
 }
 
 .grid_item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: var(--debugBorderWidth) solid black;
+    justify-self: stretch;
+    height: 100%;
+}
+
+.sign {
+    border: var(--debugBorderWidth) solid darkgreen;
+    position: relative;
+}
+
+.signContent {
+    position: relative;
     border: 1px solid black;
-    justify-self: center;
+    border-radius: 5px;
+    padding: 5px;
+    z-index: 1;
+    background-color: white;
+}
+
+.string {
+    position: absolute;
+    width: 50%;
+    left: 25%;
+    height: 100vh;
+    top: -99vh;
+    border: 1px solid black;
+    z-index: 0;
+}
+
+@keyframes show {
+    0% {
+        transform: translateY(-100vh);
+    }
+
+    100% {
+        transform: none;
+    }
+}
+
+.show {
+    animation: show 5s;
+    animation-timing-function: cubic-bezier(.2,.3,.3,1);
+}
+
+@keyframes hide {
+    0% {
+        transform: none;
+    }
+    100% {
+        transform: translateY(-100vh);
+    }
+}
+
+.hide {
+    transform: translateY(-100vh);
+    animation: hide 5s;
+    animation-timing-function: cubic-bezier(.7,0,.8,.7);
 }
 
 .background {
