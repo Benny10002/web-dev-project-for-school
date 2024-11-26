@@ -1,5 +1,5 @@
 :root {
-    /*--debugBorderWidth: 1px;*/
+    --debugBorderWidth: 1px;
 }
 
 * {
@@ -92,8 +92,8 @@ html, body {
 
 .sceneGrid {
     border: var(--debugBorderWidth) solid red;
-    width: 100%;
-    margin: 1%;
+    width: 96%;
+    padding: 2%;
     z-index: 1;
     aspect-ratio: 2/1;
     gap: 2%;
@@ -128,8 +128,10 @@ html, body {
     z-index: 2;
     background-color: white;
     overflow: hidden;
-    min-width: 40%;
-    min-height: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .signText {
