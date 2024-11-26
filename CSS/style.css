@@ -1,5 +1,5 @@
 :root {
-    --debugBorderWidth: 0px;
+    /*--debugBorderWidth: 1px;*/
 }
 
 * {
@@ -12,11 +12,74 @@ html, body {
     height: 100%;
     padding: 0px;
     margin: 0px;
+    background-color: black;
 }
 
 .scene {
+    position: relative;
     width: 100%;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    /*transform: rotate3d(1, 0, 0, -5deg);*/
+}
+
+.box {
+    position: absolute;
+    z-index: 0;
+    width: 100vw;
+}
+
+.bgimg {
+    border: var(--debugBorderWidth) yellowgreen solid; 
+    position: absolute;
+    height: 50vw;
+    background-color: darkgray;
+    transform: translateZ(-50vw);
+}
+
+.sceneContent {
+    transform: translateZ(-10vw);
+    z-index: 2;
+}
+
+.floor {
+    border: var(--debugBorderWidth) purple solid;
+    position: absolute;
+    background-color: orange;
+    height: 100vw;
+    z-index: 0;
+    transform: rotate3D(1, 0, 0, 90deg) translateZ(-25vw);
+}
+
+.leftwall {
+    border: var(--debugBorderWidth) blue solid;
+    position: absolute;
+    background-color: lightskyblue;
+    height: 50vw;
+    z-index: 0;
+    transform: rotate3D(0, 1, 0, 90deg) translateZ(-50vw);
+}
+
+.rightwall {
+    border: var(--debugBorderWidth) blue solid;
+    position: absolute;
+    background-color: lightgreen;
+    height: 50vw;
+    z-index: 0;
+    transform: rotate3D(0, 1, 0, 90deg) translateZ(50vw);
+}
+
+.ceiling {
+    border: var(--debugBorderWidth) red solid;
+    position: absolute;
+    background-color: lightgray;
+    height: 100vw;
+    z-index: 0;
+    transform: rotate3d(1, 0, 0, 90deg) translateZ(25vw);
 }
 
 .sceneGridParent {
@@ -29,13 +92,15 @@ html, body {
 
 .sceneGrid {
     border: var(--debugBorderWidth) solid red;
-    left: 10%;
-    width: 80%;
+    width: 100%;
+    margin: 1%;
+    z-index: 1;
     aspect-ratio: 2/1;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto;
     align-items: center;
+    overflow: hidden;
 }
 
 .grid_item {
@@ -57,8 +122,10 @@ html, body {
     border: 1px solid black;
     border-radius: 5px;
     padding: 5px;
-    z-index: 1;
+    z-index: 2;
     background-color: white;
+    overflow: hidden;
+    font-size: 1em;
 }
 
 .string {
@@ -68,7 +135,14 @@ html, body {
     height: 100vh;
     top: -99vh;
     border: 1px solid black;
-    z-index: 0;
+    z-index: 1;
+}
+
+.show {
+    animation: show 5s;
+    -webkit-animation: show 5s;
+    animation-timing-function: cubic-bezier(.2,.3,.3,1);
+    -webkit-animation-timing-function: cubic-bezier(.2,.3,.3,1);
 }
 
 @keyframes show {
@@ -81,9 +155,23 @@ html, body {
     }
 }
 
-.show {
-    animation: show 5s;
-    animation-timing-function: cubic-bezier(.2,.3,.3,1);
+@-webkit-keyframes show {
+    0% {
+        transform: translateY(-100vh);
+    }
+
+    100% {
+        transform: none;
+    }
+}
+
+.hide {
+    transform: translateY(-100vh);
+    -webkit-transform: translateY(-100vh);
+    animation: hide 5s;
+    -webkit-animation: hide 5s;
+    animation-timing-function: cubic-bezier(.7,0,.8,.7);
+    -webkit-animation-timing-function: cubic-bezier(.7,0,.8,.7);
 }
 
 @keyframes hide {
@@ -95,15 +183,12 @@ html, body {
     }
 }
 
-.hide {
-    transform: translateY(-100vh);
-    animation: hide 5s;
-    animation-timing-function: cubic-bezier(.7,0,.8,.7);
-}
-
-.background {
-    width: 100%;
-    height: 100%;
-    position: absolute;
+@-webkit-keyframes hide {
+    0% {
+        transform: none;
+    }
+    100% {
+        transform: translateY(-100vh);
+    }
 }
 
