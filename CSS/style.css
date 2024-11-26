@@ -1,9 +1,9 @@
 :root {
-    --debugBorderWidth: 1px;
+    /*--debugBorderWidth: 1px;*/
 }
 
 * {
-    font-family: serif, cursive;
+    font-family: serif;
     margin: 0px; 
 }
 
@@ -50,6 +50,7 @@ html, body {
     border: var(--debugBorderWidth) purple solid;
     position: absolute;
     background-color: orange;
+    background-image: url("../Assets/wood.jpg");
     height: 100vw;
     z-index: 0;
     transform: rotate3D(1, 0, 0, 90deg) translateZ(-25vw);
