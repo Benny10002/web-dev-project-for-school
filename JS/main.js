@@ -46,6 +46,7 @@ class Scene {
 
     addText(column, row, text) {
         return this.addSign(column, row)
+            .addClass("signText")
             .html(text);
     }
 
