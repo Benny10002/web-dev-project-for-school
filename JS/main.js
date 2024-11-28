@@ -46,8 +46,12 @@ class Scene {
 
     addText(column, row, text) {
         return this.addSign(column, row)
-            .addClass("signText")
-            .html(text);
+            .append($("<p></p>").html(text));
+    }
+
+    addHeader(column, row, text, headerSize) {
+        return this.addSign(column, row)
+            .append($("<"+headerSize+"></"+headerSize+">").html(text));
     }
 
     addButton(column, row, text) {

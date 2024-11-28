@@ -37,7 +37,7 @@ html, body {
     border: var(--debugBorderWidth) yellowgreen solid; 
     position: absolute;
     height: 50vw;
-    background-color: darkgray;
+    background-color: #333;
     transform: translateZ(-50vw);
 }
 
@@ -49,7 +49,7 @@ html, body {
 .floor {
     border: var(--debugBorderWidth) purple solid;
     position: absolute;
-    background-color: orange;
+    background-color: #FD8;
     height: 100vw;
     z-index: 0;
     transform: rotate3D(1, 0, 0, 90deg) translateZ(-25vw);
@@ -58,7 +58,7 @@ html, body {
 .leftwall {
     border: var(--debugBorderWidth) blue solid;
     position: absolute;
-    background-color: lightskyblue;
+    background-color: #333;
     height: 50vw;
     z-index: 0;
     transform: rotate3D(0, 1, 0, 90deg) translateZ(-50vw);
@@ -67,7 +67,7 @@ html, body {
 .rightwall {
     border: var(--debugBorderWidth) blue solid;
     position: absolute;
-    background-color: lightgreen;
+    background-color: #222;
     height: 50vw;
     z-index: 0;
     transform: rotate3D(0, 1, 0, 90deg) translateZ(50vw);
@@ -76,14 +76,14 @@ html, body {
 .ceiling {
     border: var(--debugBorderWidth) red solid;
     position: absolute;
-    background-color: lightgray;
+    background-color: #222;
     height: 100vw;
     z-index: 0;
     transform: rotate3d(1, 0, 0, 90deg) translateZ(25vw);
 }
 
 .sceneGridParent {
-    border: var(--debugBorderWidth) solid blue;
+    border: var(--debugBorderWidth) solid red;
     height: 100%;
     display: flex;
     align-items: center;
@@ -91,17 +91,16 @@ html, body {
 }
 
 .sceneGrid {
-    border: var(--debugBorderWidth) solid red;
-    width: 96%;
-    padding: 2%;
+    border: var(--debugBorderWidth) solid yellow;
+    width: 100%;
+    margin: 7%;
     z-index: 1;
     aspect-ratio: 2/1;
-    gap: 2%;
+    gap: 1%;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto;
     align-items: center;
-    overflow: hidden;
 }
 
 .grid_item {
@@ -132,10 +131,8 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-}
 
-.signText {
-    font-size: 12pt;
+    font-size: 1.5cqw;
 }
 
 .string {
@@ -144,7 +141,7 @@ html, body {
     left: 25%;
     height: 100vh;
     top: -99vh;
-    border: 1px solid black;
+    border: 2px solid black;
     z-index: 1;
 }
 
