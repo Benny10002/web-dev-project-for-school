@@ -15,6 +15,95 @@ html, body {
     background-color: black;
 }
 
+.nonInteractive {
+    pointer-events: none;
+}
+
+.theater {
+    width: 100%;
+    height: 100%;
+}
+
+.foregroundCurtainsParent{
+    position: absolute;
+    left: 0px;
+    top: 0px;   
+}
+
+.foregroundCurtains {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.curtain {
+    position: absolute;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../Assets/curtainsStripe.jpg"), url("../Assets/curtainsStripe.jpg");
+    background-size: 100vw;
+    z-index: 3;
+}
+
+@keyframes curtainOpen {
+    0% {
+        left: var(--leftClosed);
+    }
+
+    100% {
+        left: var(--leftOpen)
+    }
+}
+
+@keyframes curtainClosed {
+    0% {
+        left: var(--leftOpen)
+    }
+    
+    100% {
+        left: var(--leftClosed);
+    }
+}
+
+.curtainLeft {
+    --leftOpen: -90vw;
+    --leftClosed: -50vw;
+    left: var(--leftOpen);
+    top: 0px;
+    animation: curtainOpen 2s ease-out;
+}
+
+.curtainRight {
+    --leftOpen: 90vw;
+    --leftClosed: 50vw;
+    left: 90vw;
+    top: 0px;
+    animation: curtainOpen 2s ease-out;
+}
+
+.playCurtainClosed {
+    animation: curtainClosed 2s ease-in;
+}
+
+.curtainTop {
+    background-image: url("../Assets/curtains.png");
+    background-repeat: repeat-x;
+    background-size: contain;
+    width: 100vw;
+    top: calc(-80vw + 50vh);
+
+}
+
+.curtainTopFill {
+    background-position: top center;
+    background-size: contain;
+    width: 100vw;
+    top: 0px;
+    height: calc(-70vw + 50vh);
+    z-index: 4;
+}
+
 .scene {
     position: relative;
     width: 100%;
@@ -39,11 +128,6 @@ html, body {
     height: 50vw;
     background-color: #333;
     transform: translateZ(-50vw);
-}
-
-.sceneContent {
-    transform: translateZ(-10vw);
-    z-index: 2;
 }
 
 .floor {
@@ -83,15 +167,38 @@ html, body {
     transform: rotate3d(1, 0, 0, 90deg) translateZ(25vw);
 }
 
+.sceneContent {
+    transform: translateZ(-20vw);
+    z-index: 2;
+    height: 50vw;
+}
+
+.contentHeader {
+    position: relative;
+    height: 7%;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.nextBtn {
+    position: absolute;
+    right: 0px;
+}
+
+.prevBtn {
+    position: absolute;
+    left: 0px;
+}
+
 .sceneGridParent {
     border: var(--debugBorderWidth) solid red;
-    height: 100%;
+    height: 93%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.sceneGrid {
+.contentGrid {
     border: var(--debugBorderWidth) solid yellow;
     width: 100%;
     margin: 7%;
@@ -116,16 +223,17 @@ html, body {
 .sign {
     border: var(--debugBorderWidth) solid darkgreen;
     position: relative;
-    min-width: 100%;
-    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .signContent {
-    position: relative;
+    /*position: relative;*/
     border: 1px solid black;
     border-radius: 5px;
     padding: 5px;
-    z-index: 2;
+    z-index: 100;
     background-color: white;
     overflow: hidden;
     height: 100%;
@@ -136,6 +244,25 @@ html, body {
     font-size: 1.5cqw;
 }
 
+.signContent > * {
+    pointer-events: all;
+}
+
+.signContent > button {
+    z-index: 101;
+    font-size: 1.5cqw;
+}
+
+.signContent > h2 {
+    font-size: 2.5cqw;
+    font-weight: bold;
+}
+
+.signContent > h1 {
+    font-size: 3cqw;
+    font-weight: bold;
+}
+
 .string {
     position: absolute;
     width: 50%;
@@ -143,7 +270,7 @@ html, body {
     height: 100vh;
     top: -99vh;
     border: 2px solid black;
-    z-index: 1;
+    z-index: -1;
 }
 
 .show {
@@ -195,7 +322,7 @@ html, body {
     0% {
         transform: none;
     }
-    100% {
+    100% { 
         transform: translateY(-100vh);
     }
 }
