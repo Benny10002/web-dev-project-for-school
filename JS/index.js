@@ -119,4 +119,4 @@ function mainPage() {
     
 }
 
-page2_content()
+mainPage()
